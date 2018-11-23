@@ -21,13 +21,18 @@ public class JavaFinal extends Application {
     
     @Override
     public void start(Stage primaryStage) {
+        
+        //just using this button for testing purposes -gh
+        
         Button btn = new Button();
-        btn.setText("Say 'Hello World'");
+        btn.setText("Get Fortune!");
         btn.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
+                //generates and returns fortune
+                Fortune fortune = new Fortune();
+                System.out.println(fortune.toString());
             }
         });
         
@@ -36,7 +41,7 @@ public class JavaFinal extends Application {
         
         Scene scene = new Scene(root, 300, 250);
         
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Furby Fortune Teller");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
