@@ -21,7 +21,7 @@ import javafx.util.Duration;
 
 public class AnimateFurby extends Application {
 
-    public void start(Stage primaryStage){
+    public void start(Stage primaryStage){      
         //set stage, pane, scene
         primaryStage.setTitle("Furby Fortune Teller");
         StackPane pane = new StackPane();
@@ -41,7 +41,7 @@ public class AnimateFurby extends Application {
         
         //should be a cleaner way to implement animation...will update.
         //ImageView[] furbyArray = {image1, image2, image3, etc.,};
-        
+      
         //for now: create animation, use key frames
         TimelineBuilder.create()
         .cycleCount(Animation.INDEFINITE)
@@ -107,5 +107,5 @@ public class AnimateFurby extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    }
+}
 
