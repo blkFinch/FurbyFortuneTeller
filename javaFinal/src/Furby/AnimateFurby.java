@@ -28,14 +28,16 @@ public class AnimateFurby extends Application {
         Scene scene = new Scene(pane, 500, 350);
         
         //get images
-        ImageView image1 = new ImageView(getClass().getResource("testFurby1.png").toExternalForm());
-        ImageView image2 = new ImageView(getClass().getResource("testFurby2.png").toExternalForm());
-        ImageView image3 = new ImageView(getClass().getResource("testFurby3.png").toExternalForm());
-        ImageView image4 = new ImageView(getClass().getResource("testFurby4.png").toExternalForm());
-        ImageView image5 = new ImageView(getClass().getResource("testFurby5.png").toExternalForm());
-        ImageView image6 = new ImageView(getClass().getResource("testFurby6.png").toExternalForm());
-        ImageView image7 = new ImageView(getClass().getResource("testFurby7.png").toExternalForm());
-        ImageView image8 = new ImageView(getClass().getResource("testFurby8.png").toExternalForm());
+        ImageView image1 = new ImageView(getClass().getResource("furbyBasic.png").toExternalForm());
+        ImageView image2 = new ImageView(getClass().getResource("furbyBow.png").toExternalForm());
+        ImageView image3 = new ImageView(getClass().getResource("furbyBasic.png").toExternalForm());
+        ImageView image4 = new ImageView(getClass().getResource("furbyBow.png").toExternalForm());
+        ImageView image5 = new ImageView(getClass().getResource("furbyBasic.png").toExternalForm());
+        ImageView image6 = new ImageView(getClass().getResource("furbyBow.png").toExternalForm());
+        ImageView image7 = new ImageView(getClass().getResource("furbyBasic.png").toExternalForm());
+        ImageView image8 = new ImageView(getClass().getResource("furbyTongue.png").toExternalForm());
+        ImageView image9 = new ImageView(getClass().getResource("furbyBasic.png").toExternalForm());
+        ImageView image10 = new ImageView(getClass().getResource("furbyBlink.png").toExternalForm());
         
         
         
@@ -46,52 +48,65 @@ public class AnimateFurby extends Application {
         TimelineBuilder.create()
         .cycleCount(Animation.INDEFINITE)
         .keyFrames(
-            new KeyFrame(Duration.millis(800), new EventHandler<ActionEvent>(){
+            new KeyFrame(Duration.millis(1000), new EventHandler<ActionEvent>(){
                @Override
                 public void handle(ActionEvent t) {
                     pane.getChildren().setAll(image1);
                 }
             }),
-            new KeyFrame(Duration.millis(850), new EventHandler<ActionEvent>(){
+            new KeyFrame(Duration.millis(1150), new EventHandler<ActionEvent>(){
                 @Override
                 public void handle(ActionEvent t) {
                      pane.getChildren().setAll(image2);
                 }
+               
             }),
-            new KeyFrame(Duration.millis(900), new EventHandler<ActionEvent>(){
+            new KeyFrame(Duration.millis(1300), new EventHandler<ActionEvent>(){
                @Override
                 public void handle(ActionEvent t) {
                      pane.getChildren().setAll(image3);
                 }
             }),
-            new KeyFrame(Duration.millis(950), new EventHandler<ActionEvent>(){
+            new KeyFrame(Duration.millis(1450), new EventHandler<ActionEvent>(){
                @Override
                 public void handle(ActionEvent t) {
                      pane.getChildren().setAll(image4);
                 }
             }),
-            new KeyFrame(Duration.millis(1000), new EventHandler<ActionEvent>(){
+            new KeyFrame(Duration.millis(1600), new EventHandler<ActionEvent>(){
                @Override
                 public void handle(ActionEvent t) {
                      pane.getChildren().setAll(image5);
                 }
             }),
-            new KeyFrame(Duration.millis(1050), new EventHandler<ActionEvent>(){
+            new KeyFrame(Duration.millis(1750), new EventHandler<ActionEvent>(){
                @Override
                 public void handle(ActionEvent t) {
                      pane.getChildren().setAll(image6);
                 }
             }),
-            new KeyFrame(Duration.millis(1100), new EventHandler<ActionEvent>(){
+            new KeyFrame(Duration.millis(1900), new EventHandler<ActionEvent>(){
                @Override
                 public void handle(ActionEvent t) {
                      pane.getChildren().setAll(image7);
                 }
-            }),
-            new KeyFrame(Duration.millis(1150), new EventHandler<ActionEvent>(){
+           }),
+            new KeyFrame(Duration.millis(2400), new EventHandler<ActionEvent>(){
                @Override
                 public void handle(ActionEvent t) {
-                    pane.getChildren().setAll(image8);
+                     pane.getChildren().setAll(image8);
+                }
+           }),
+            new KeyFrame(Duration.millis(2200), new EventHandler<ActionEvent>(){
+               @Override
+                public void handle(ActionEvent t) {
+                     pane.getChildren().setAll(image9);
+                }
+           }),
+            new KeyFrame(Duration.millis(700), new EventHandler<ActionEvent>(){
+               @Override
+                public void handle(ActionEvent t) {
+                    pane.getChildren().setAll(image10);
                 }
             
             })
