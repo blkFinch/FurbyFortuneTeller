@@ -11,6 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -19,6 +21,8 @@ import javafx.stage.Stage;
  * @author hobbydobbie
  */
 public class JavaFinal extends Application {
+    HBox hb = new HBox();
+    Label fortuneLabel = new Label();
     
     @Override
     public void start(Stage primaryStage) {
@@ -34,21 +38,26 @@ public class JavaFinal extends Application {
                 //generates and returns fortune
                 Fortune fortune = new Fortune();
                 System.out.println(fortune.toString());
+                
+                fortuneLabel.setText(fortune.toString());
+                
+                //opens new furby window
+                new AnimateFurby();
             }
         });
-
+        
+        hb.getChildren().addAll(btn, fortuneLabel);
         StackPane root = new StackPane();
-        root.getChildren().add(btn);
+        root.getChildren().add(hb);
         
         Scene scene = new Scene(root, 500, 350);
 
         primaryStage.setTitle("Furby Fortune Teller");
         primaryStage.setScene(scene);
         primaryStage.show();
+       
         
-                
-        Stage furby = new Stage();
-        new AnimateFurby().start(furby);
+     
     }
 
     /**
