@@ -10,6 +10,7 @@ import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -22,20 +23,21 @@ import javafx.util.Duration;
  * @author hobbydobbie
  */
 
-public class AnimateFurby extends Stage {
+public class AnimateFurby extends ImageView{
     HBox hb = new HBox();
     
-    public AnimateFurby(){      
+     public AnimateFurby() {
+        
         //set stage, pane, scene
-        this.setScene(new Scene(hb, 500, 350));   
+//        this.setScene(new Scene(hb, 500, 350));   
         
 
-        javafx.geometry.Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
- 
-        //set Stage boundaries to the lower right corner of the visible bounds of the main screen
-        this.setX(primaryScreenBounds.getMinX() + primaryScreenBounds.getWidth() - 400);
-        this.setY(primaryScreenBounds.getMinY() + primaryScreenBounds.getHeight() - 300);
-        this.show();
+//        javafx.geometry.Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+// 
+//        //set Stage boundaries to the lower right corner of the visible bounds of the main screen
+//        this.setX(primaryScreenBounds.getMinX() + primaryScreenBounds.getWidth() - 400);
+//        this.setY(primaryScreenBounds.getMinY() + primaryScreenBounds.getHeight() - 300);
+//        this.show();
         
         //get images
         ImageView image1 = new ImageView(getClass().getResource("furbyBasic.png").toExternalForm());
@@ -47,8 +49,7 @@ public class AnimateFurby extends Stage {
         ImageView image7 = new ImageView(getClass().getResource("furbyBasic.png").toExternalForm());
         ImageView image8 = new ImageView(getClass().getResource("furbyTongue.png").toExternalForm());
         ImageView image9 = new ImageView(getClass().getResource("furbyBasic.png").toExternalForm());
-        ImageView image10 = new ImageView(getClass().getResource("furbyBlink.png").toExternalForm());
-        
+        ImageView image10 = new ImageView(getClass().getResource("furbyBlink.png").toExternalForm());        
         
         
         //should be a cleaner way to implement animation...will update.
