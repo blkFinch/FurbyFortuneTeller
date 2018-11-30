@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -34,6 +35,9 @@ public class AnimateFurby extends Application {
         
         Button btn = new Button();
         btn.setText("Get Fortune!");
+        
+        GridPane controls = new GridPane();
+        controls.add(btn,0,0);
         
         //get images
         ImageView image1 = new ImageView(getClass().getResource("furbyBasic.png").toExternalForm());
@@ -56,43 +60,43 @@ public class AnimateFurby extends Application {
         Timeline timeline = new Timeline(
             new KeyFrame(Duration.millis(1000), (ActionEvent t) -> {
                 pane.getChildren().setAll(image1);
-                pane.setBottom(btn);
+                pane.setBottom(controls);
         }),
             new KeyFrame(Duration.millis(1150), (ActionEvent t) -> {
                 pane.getChildren().setAll(image2);
-                pane.setBottom(btn);
+                pane.setBottom(controls);
         }),
             new KeyFrame(Duration.millis(1300), (ActionEvent t) -> {
                 pane.getChildren().setAll(image3);
-                pane.setBottom(btn);
+                pane.setBottom(controls);
         }),
             new KeyFrame(Duration.millis(1450), (ActionEvent t) -> {
                 pane.getChildren().setAll(image4);
-                pane.setBottom(btn);
+                pane.setBottom(controls);
         }),
             new KeyFrame(Duration.millis(1600), (ActionEvent t) -> {
                 pane.getChildren().setAll(image5);
-                pane.setBottom(btn);
+                pane.setBottom(controls);
         }),
             new KeyFrame(Duration.millis(1750), (ActionEvent t) -> {
                 pane.getChildren().setAll(image6);
-                pane.setBottom(btn);
+                pane.setBottom(controls);
         }),
             new KeyFrame(Duration.millis(1900), (ActionEvent t) -> {
                 pane.getChildren().setAll(image7);
-                pane.setBottom(btn);
+                pane.setBottom(controls);
         }),
             new KeyFrame(Duration.millis(2400), (ActionEvent t) -> {
                 pane.getChildren().setAll(image8);
-                pane.setBottom(btn);
+                pane.setBottom(controls);
         }),
             new KeyFrame(Duration.millis(2200), (ActionEvent t) -> {
                 pane.getChildren().setAll(image9);
-                pane.setBottom(btn);
+                pane.setBottom(controls);
         }),
             new KeyFrame(Duration.millis(700), (ActionEvent t) -> {
                 pane.getChildren().setAll(image10);
-                pane.setBottom(btn);
+                pane.setBottom(controls);
         })
         );
         timeline.setCycleCount(Timeline.INDEFINITE);
