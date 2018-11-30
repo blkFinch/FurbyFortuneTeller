@@ -21,9 +21,9 @@ import java.util.logging.Logger;
 public class Fortune {
     
     private String fortune;
-    private final String subjects = "src/text/subjects.txt";
-    private final String verbs = "src/text/verbs.txt";
-    private final String times = "src/text/times.txt";
+    private String subjects = "src/text/subjects.txt";
+    private String verbs = "src/text/verbs.txt";
+    private String times = "src/text/times.txt";
 
     public String getFortune() {
         return fortune;

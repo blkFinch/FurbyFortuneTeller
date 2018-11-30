@@ -2,20 +2,20 @@
 //images included are for testing--will update later.
 package Furby;
 
-import java.awt.geom.Rectangle2D;
+import javafinal.Fortune;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
-import javafx.animation.TimelineBuilder;
+import javafx.animation.Timeline;
+
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 /**
@@ -23,21 +23,17 @@ import javafx.util.Duration;
  * @author hobbydobbie
  */
 
-public class AnimateFurby extends ImageView{
-    HBox hb = new HBox();
-    
-     public AnimateFurby() {
-        
-        //set stage, pane, scene
-//        this.setScene(new Scene(hb, 500, 350));   
-        
+public class AnimateFurby extends Application {
 
-//        javafx.geometry.Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-// 
-//        //set Stage boundaries to the lower right corner of the visible bounds of the main screen
-//        this.setX(primaryScreenBounds.getMinX() + primaryScreenBounds.getWidth() - 400);
-//        this.setY(primaryScreenBounds.getMinY() + primaryScreenBounds.getHeight() - 300);
-//        this.show();
+    public void start(Stage primaryStage){      
+        //set stage, pane, scene
+        BorderPane pane = new BorderPane();
+        primaryStage.setTitle("Furby Fortune Teller");
+        //StackPane pane = new StackPane();
+        Scene scene = new Scene(pane, 600, 450);
+        
+        Button btn = new Button();
+        btn.setText("Get Fortune!");
         
         //get images
         ImageView image1 = new ImageView(getClass().getResource("furbyBasic.png").toExternalForm());
@@ -49,83 +45,77 @@ public class AnimateFurby extends ImageView{
         ImageView image7 = new ImageView(getClass().getResource("furbyBasic.png").toExternalForm());
         ImageView image8 = new ImageView(getClass().getResource("furbyTongue.png").toExternalForm());
         ImageView image9 = new ImageView(getClass().getResource("furbyBasic.png").toExternalForm());
-        ImageView image10 = new ImageView(getClass().getResource("furbyBlink.png").toExternalForm());        
+        ImageView image10 = new ImageView(getClass().getResource("furbyBlink.png").toExternalForm());
+        
         
         
         //should be a cleaner way to implement animation...will update.
-        //ImageView[] furbyArray = {image1, image2, image3, etc.,};
-        
-        //maybe try implementing a while loop here instead? - gh    
-        
+        ImageView[] furbyArray = {image1, image2, image3, image4, image5, image6, image7, image8, image9, image10};
+      
         //for now: create animation, use key frames
-        TimelineBuilder.create()
-        .cycleCount(Animation.INDEFINITE)
-        .keyFrames(
-            new KeyFrame(Duration.millis(1000), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                    hb.getChildren().setAll(image1);
-                }
-            }),
-            new KeyFrame(Duration.millis(1150), new EventHandler<ActionEvent>(){
-                @Override
-                public void handle(ActionEvent t) {
-                     hb.getChildren().setAll(image2);
-                }
-               
-            }),
-            new KeyFrame(Duration.millis(1300), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                     hb.getChildren().setAll(image3);
-                }
-            }),
-            new KeyFrame(Duration.millis(1450), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                     hb.getChildren().setAll(image4);
-                }
-            }),
-            new KeyFrame(Duration.millis(1600), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                     hb.getChildren().setAll(image5);
-                }
-            }),
-            new KeyFrame(Duration.millis(1750), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                     hb.getChildren().setAll(image6);
-                }
-            }),
-            new KeyFrame(Duration.millis(1900), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                     hb.getChildren().setAll(image7);
-                }
-           }),
-            new KeyFrame(Duration.millis(2400), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                     hb.getChildren().setAll(image8);
-                }
-           }),
-            new KeyFrame(Duration.millis(2200), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                     hb.getChildren().setAll(image9);
-                }
-           }),
-            new KeyFrame(Duration.millis(700), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                    hb.getChildren().setAll(image10);
-                }
+        Timeline timeline = new Timeline(
+            new KeyFrame(Duration.millis(1000), (ActionEvent t) -> {
+                pane.getChildren().setAll(image1);
+                pane.setBottom(btn);
+        }),
+            new KeyFrame(Duration.millis(1150), (ActionEvent t) -> {
+                pane.getChildren().setAll(image2);
+                pane.setBottom(btn);
+        }),
+            new KeyFrame(Duration.millis(1300), (ActionEvent t) -> {
+                pane.getChildren().setAll(image3);
+                pane.setBottom(btn);
+        }),
+            new KeyFrame(Duration.millis(1450), (ActionEvent t) -> {
+                pane.getChildren().setAll(image4);
+                pane.setBottom(btn);
+        }),
+            new KeyFrame(Duration.millis(1600), (ActionEvent t) -> {
+                pane.getChildren().setAll(image5);
+                pane.setBottom(btn);
+        }),
+            new KeyFrame(Duration.millis(1750), (ActionEvent t) -> {
+                pane.getChildren().setAll(image6);
+                pane.setBottom(btn);
+        }),
+            new KeyFrame(Duration.millis(1900), (ActionEvent t) -> {
+                pane.getChildren().setAll(image7);
+                pane.setBottom(btn);
+        }),
+            new KeyFrame(Duration.millis(2400), (ActionEvent t) -> {
+                pane.getChildren().setAll(image8);
+                pane.setBottom(btn);
+        }),
+            new KeyFrame(Duration.millis(2200), (ActionEvent t) -> {
+                pane.getChildren().setAll(image9);
+                pane.setBottom(btn);
+        }),
+            new KeyFrame(Duration.millis(700), (ActionEvent t) -> {
+                pane.getChildren().setAll(image10);
+                pane.setBottom(btn);
+        })
+        );
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play(); 
             
-            })
-        )
-        .build().play();  
+        
+      
+        btn.setOnAction((ActionEvent event) -> {
+            //generates and returns fortune
+            Fortune fortune = new Fortune();
+            System.out.println(fortune.toString());
+        });
+        
+        
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
     
+   
+    
+    }
+    public static void main(String[] args) {
+        launch(args);
     }
 }
 
