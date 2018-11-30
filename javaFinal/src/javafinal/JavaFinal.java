@@ -45,10 +45,10 @@ public class JavaFinal extends Application {
         hb.getChildren().addAll(btn, fortuneLabel);
         
         StackPane root = new StackPane();
-        BorderPane pane1 = new BorderPane();
-        
-        pane1.setTop(hb);
-        pane1.setCenter(furby);
+        GridPane border = new GridPane();
+        border.setVgap(20);
+        border.add(hb,0,0);
+        border.add(furby,0,1);
         
         btn.setOnAction(new EventHandler<ActionEvent>() {
             
@@ -60,15 +60,15 @@ public class JavaFinal extends Application {
                 
                 fortuneLabel.setText(fortune.toString());
                 
-                pane1.setCenter(furby2);
+                border.add(furby2,0,1);
             }
         });
         
         
         
-        root.getChildren().add(pane1);
+        root.getChildren().add(border);
         
-        Scene scene = new Scene(root, 800, 650);
+        Scene scene = new Scene(root, 500, 400);
 //        AnimateFurby furb = new AnimateFurby(root);
 
         primaryStage.setTitle("Furby Fortune Teller");
