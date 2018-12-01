@@ -54,27 +54,10 @@ public class AnimateFurby extends Application {
         
         
         //should be a cleaner way to implement animation...will update.
-        //ImageView[] furbyArray = {image1, image2, image3, image4, image5, image6, image7, image8, image9, image10};
+        ImageView[] furbyArray = {image1, image2, image3, image4, image5, image6, image7, image8, image9, image10};
       
         //for now: create animation, use key frames
-        Timeline furbyIdle = new Timeline(
-            new KeyFrame(Duration.millis(1000), (ActionEvent x) -> {
-                pane.getChildren().setAll(image1);
-                pane.setBottom(controls);
-        }),
-            new KeyFrame(Duration.millis(1150), (ActionEvent x) -> {
-                pane.getChildren().setAll(image10);
-                pane.setBottom(controls);
-        }),
-            new KeyFrame(Duration.millis(1300), (ActionEvent x) -> {
-                pane.getChildren().setAll(image1);
-                pane.setBottom(controls);
-        })
-        );
-        furbyIdle.setCycleCount(Timeline.INDEFINITE);
-        furbyIdle.play();
-        
-        Timeline furbyMotion = new Timeline(    
+        Timeline timeline = new Timeline(
             new KeyFrame(Duration.millis(1000), (ActionEvent t) -> {
                 pane.getChildren().setAll(image1);
                 pane.setBottom(controls);
@@ -98,12 +81,12 @@ public class AnimateFurby extends Application {
             new KeyFrame(Duration.millis(1750), (ActionEvent t) -> {
                 pane.getChildren().setAll(image6);
                 pane.setBottom(controls);
-            }),
+        }),
             new KeyFrame(Duration.millis(1900), (ActionEvent t) -> {
                 pane.getChildren().setAll(image7);
                 pane.setBottom(controls);
         }),
-            new KeyFrame(Duration.millis(2050), (ActionEvent t) -> {
+            new KeyFrame(Duration.millis(2400), (ActionEvent t) -> {
                 pane.getChildren().setAll(image8);
                 pane.setBottom(controls);
         }),
@@ -116,16 +99,12 @@ public class AnimateFurby extends Application {
                 pane.setBottom(controls);
         })
         );
-        furbyMotion.setCycleCount(2);
-         
-        //timeline.pause();
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play(); 
             
         
       
         btn.setOnAction((ActionEvent event) -> {
-            furbyIdle.stop();
-            furbyMotion.play();
-            furbyIdle.play();
             //generates and returns fortune
             Fortune fortune = new Fortune();
             System.out.println(fortune.toString());
@@ -134,6 +113,10 @@ public class AnimateFurby extends Application {
         
         primaryStage.setScene(scene);
         primaryStage.show();
+
+    
+   
+    
     }
     public static void main(String[] args) {
         launch(args);
