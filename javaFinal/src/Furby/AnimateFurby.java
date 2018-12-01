@@ -2,15 +2,20 @@
 //images included are for testing--will update later.
 package Furby;
 
+import javafinal.Fortune;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
-import javafx.animation.TimelineBuilder;
+import javafx.animation.Timeline;
+
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -23,9 +28,16 @@ public class AnimateFurby extends Application {
 
     public void start(Stage primaryStage){      
         //set stage, pane, scene
+        BorderPane pane = new BorderPane();
         primaryStage.setTitle("Furby Fortune Teller");
-        StackPane pane = new StackPane();
-        Scene scene = new Scene(pane, 500, 350);
+        //StackPane pane = new StackPane();
+        Scene scene = new Scene(pane, 600, 450);
+        
+        Button btn = new Button();
+        btn.setText("Get Fortune!");
+        
+        GridPane controls = new GridPane();
+        controls.add(btn,0,0);
         
         //get images
         ImageView image1 = new ImageView(getClass().getResource("furbyBasic.png").toExternalForm());
@@ -42,82 +54,86 @@ public class AnimateFurby extends Application {
         
         
         //should be a cleaner way to implement animation...will update.
-        //ImageView[] furbyArray = {image1, image2, image3, etc.,};
+        //ImageView[] furbyArray = {image1, image2, image3, image4, image5, image6, image7, image8, image9, image10};
       
         //for now: create animation, use key frames
-        TimelineBuilder.create()
-        .cycleCount(Animation.INDEFINITE)
-        .keyFrames(
-            new KeyFrame(Duration.millis(1000), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                    pane.getChildren().setAll(image1);
-                }
+        Timeline furbyIdle = new Timeline(
+            new KeyFrame(Duration.millis(1000), (ActionEvent x) -> {
+                pane.getChildren().setAll(image1);
+                pane.setBottom(controls);
+        }),
+            new KeyFrame(Duration.millis(1150), (ActionEvent x) -> {
+                pane.getChildren().setAll(image10);
+                pane.setBottom(controls);
+        }),
+            new KeyFrame(Duration.millis(1300), (ActionEvent x) -> {
+                pane.getChildren().setAll(image1);
+                pane.setBottom(controls);
+        })
+        );
+        furbyIdle.setCycleCount(Timeline.INDEFINITE);
+        furbyIdle.play();
+        
+        Timeline furbyMotion = new Timeline(    
+            new KeyFrame(Duration.millis(1000), (ActionEvent t) -> {
+                pane.getChildren().setAll(image1);
+                pane.setBottom(controls);
+        }),
+            new KeyFrame(Duration.millis(1150), (ActionEvent t) -> {
+                pane.getChildren().setAll(image2);
+                pane.setBottom(controls);
+        }),
+            new KeyFrame(Duration.millis(1300), (ActionEvent t) -> {
+                pane.getChildren().setAll(image3);
+                pane.setBottom(controls);
+        }),
+            new KeyFrame(Duration.millis(1450), (ActionEvent t) -> {
+                pane.getChildren().setAll(image4);
+                pane.setBottom(controls);
+        }),
+            new KeyFrame(Duration.millis(1600), (ActionEvent t) -> {
+                pane.getChildren().setAll(image5);
+                pane.setBottom(controls);
+        }),
+            new KeyFrame(Duration.millis(1750), (ActionEvent t) -> {
+                pane.getChildren().setAll(image6);
+                pane.setBottom(controls);
             }),
-            new KeyFrame(Duration.millis(1150), new EventHandler<ActionEvent>(){
-                @Override
-                public void handle(ActionEvent t) {
-                     pane.getChildren().setAll(image2);
-                }
-               
-            }),
-            new KeyFrame(Duration.millis(1300), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                     pane.getChildren().setAll(image3);
-                }
-            }),
-            new KeyFrame(Duration.millis(1450), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                     pane.getChildren().setAll(image4);
-                }
-            }),
-            new KeyFrame(Duration.millis(1600), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                     pane.getChildren().setAll(image5);
-                }
-            }),
-            new KeyFrame(Duration.millis(1750), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                     pane.getChildren().setAll(image6);
-                }
-            }),
-            new KeyFrame(Duration.millis(1900), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                     pane.getChildren().setAll(image7);
-                }
-           }),
-            new KeyFrame(Duration.millis(2400), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                     pane.getChildren().setAll(image8);
-                }
-           }),
-            new KeyFrame(Duration.millis(2200), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                     pane.getChildren().setAll(image9);
-                }
-           }),
-            new KeyFrame(Duration.millis(700), new EventHandler<ActionEvent>(){
-               @Override
-                public void handle(ActionEvent t) {
-                    pane.getChildren().setAll(image10);
-                }
+            new KeyFrame(Duration.millis(1900), (ActionEvent t) -> {
+                pane.getChildren().setAll(image7);
+                pane.setBottom(controls);
+        }),
+            new KeyFrame(Duration.millis(2050), (ActionEvent t) -> {
+                pane.getChildren().setAll(image8);
+                pane.setBottom(controls);
+        }),
+            new KeyFrame(Duration.millis(2200), (ActionEvent t) -> {
+                pane.getChildren().setAll(image9);
+                pane.setBottom(controls);
+        }),
+            new KeyFrame(Duration.millis(700), (ActionEvent t) -> {
+                pane.getChildren().setAll(image10);
+                pane.setBottom(controls);
+        })
+        );
+        furbyMotion.setCycleCount(2);
+         
+        //timeline.pause();
             
-            })
-        )
-        .build().play();
+        
+      
+        btn.setOnAction((ActionEvent event) -> {
+            furbyIdle.stop();
+            furbyMotion.play();
+            furbyIdle.play();
+            //generates and returns fortune
+            Fortune fortune = new Fortune();
+            System.out.println(fortune.toString());
+        });
+        
+        
         primaryStage.setScene(scene);
         primaryStage.show();
-
-    
-   
-    
     }
     public static void main(String[] args) {
         launch(args);

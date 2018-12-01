@@ -18,7 +18,7 @@ import javafx.stage.Stage;
  *
  * @author hobbydobbie
  */
-public class JavaFinal extends Application {
+/**public class JavaFinal extends Application {
     
     @Override
     public void start(Stage primaryStage) {
@@ -33,7 +33,7 @@ public class JavaFinal extends Application {
             public void handle(ActionEvent event) {
                 //generates and returns fortune
                 Fortune fortune = new Fortune();
-                System.out.println(fortune.toString());
+               System.out.println(fortune.toString());
             }
         });
 
@@ -54,8 +54,8 @@ public class JavaFinal extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         launch(args);     
     }
     
-}
+    }**/
