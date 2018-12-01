@@ -2,7 +2,8 @@
 //images included are for testing--will update later.
 package Furby;
 
-import javafinal.Fortune;
+import Fortune.Fortune;
+import Fortune.FortuneWindow;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -32,6 +33,8 @@ public class AnimateFurby extends Application {
         primaryStage.setTitle("Furby Fortune Teller");
         //StackPane pane = new StackPane();
         Scene scene = new Scene(pane, 600, 450);
+        //imports stylesheet from Furby folder 
+         scene.getStylesheets().add(this.getClass().getResource("style.css").toExternalForm());
         
         Button btn = new Button();
         btn.setText("Get Fortune!");
@@ -108,8 +111,10 @@ public class AnimateFurby extends Application {
             //generates and returns fortune
             Fortune fortune = new Fortune();
             System.out.println(fortune.toString());
+            
+            //opens new fortune window
+            FortuneWindow window = new FortuneWindow(fortune.toString());
         });
-        
         
         primaryStage.setScene(scene);
         primaryStage.show();

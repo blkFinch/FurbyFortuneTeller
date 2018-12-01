@@ -3,7 +3,7 @@
     seperate text files. the text files can be modified without
     changing the function of this class
  */
-package javafinal;
+package Fortune;
 
 import java.io.File;
 import java.io.FileNotFoundException;
