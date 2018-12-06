@@ -23,25 +23,20 @@ public class Facts {
     
         
     private String fact;
-    private String black = "src/factText/black.txt";
-    private String green = "src/factText/green.txt";
-    private String blue = "src/factText/blue.txt";
+    private String file;
  
-    
-    
     
     public String getFact() {
         return fact;
     }
 
-    public void setFact(String fortune) {
+    public void setFact(String fact) {
         this.fact = fact;
     }
 
-    public Facts() {
-        this.fact = RandomFactBlack();
-        this.fact = RandomFactGreen();
-        this.fact = RandomFactBlue();
+    public Facts(String color) {
+        this.file = "src/factText/" + color + ".txt";
+        this.fact = RandomFact(this.file);
     }
 
     private String RandomFact(String filename) {
@@ -63,17 +58,6 @@ public class Facts {
         Collections.shuffle(lines);
         return lines.get(0);
     }
-
-    public String RandomFactBlack() {
-        return RandomFact(black);
-        
-    }   
-    public String RandomFactGreen() {
-        return RandomFact(green);
-    }
-    public String RandomFactBlue() {
-        return RandomFact(blue);
-    } 
 }
 
 

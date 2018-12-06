@@ -12,6 +12,7 @@ import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -34,7 +35,7 @@ public class AnimateFurby extends Application {
         BorderPane pane2 = new BorderPane();
         primaryStage.setTitle("Furby Fortune Teller");
         //main app scene
-        Scene scene = new Scene(pane, 500, 450);
+        Scene scene = new Scene(pane, 500, 525);
         //open scene
         Scene sceneOpen = new Scene(pane2, 500, 350);
         //imports stylesheet from Furby folder 
@@ -46,9 +47,6 @@ public class AnimateFurby extends Application {
         Button enter = new Button();//enter app 
         enter.setText("Enter!");
         
-        Button btnFact = new Button();//fact button
-        btnFact.setText("Enter");
-        
         Button btn = new Button();//fortune button
         btn.setText("Get Fortune!");
         
@@ -56,15 +54,20 @@ public class AnimateFurby extends Application {
         controls.setHgap(1);
         controls.setVgap(1);
         
-        controls.add(btn,0,0);
-        
-        //controls.add(btnFact,0,5);
-        //controls.add(new Label("Type black, green, or blue,"
-                //+ " to reveal a fact about yourself. "), 0,3);
-        //controls.add(factField, 0,4);
+        controls.add(btn,0,1);
         
         
+        controls.add(new Label("Enter your birth month:"), 0,3);
+        controls.add(new Label("Enter your birth day:"), 0,4);
+        controls.add(new Label("Choose your eye color:"), 0,6);
         
+        TextField monthField = new TextField();
+        TextField dayField = new TextField();
+        TextField colorField =new TextField();
+        
+        controls.add(monthField, 1,3);
+        controls.add(dayField, 1,4);
+        controls.add(colorField, 1,6);
         
         //get images
         ImageView image1 = new ImageView(getClass().getResource("furbyBasic.png").toExternalForm());
@@ -174,6 +177,7 @@ public class AnimateFurby extends Application {
                 pane.getChildren().setAll(image10);
                 pane.setBottom(controls);
                 
+                
         })
         );
         furbyMotion.setCycleCount(2);
@@ -188,34 +192,19 @@ public class AnimateFurby extends Application {
             furbyIdle.stop();
             furbyMotion.play();
             furbyIdle.play();
-            //generates and returns fortune
-            Fortune fortune = new Fortune();
-            System.out.println(fortune.toString());
             
-            //opens new fortune window
-            FortuneWindow window = new FortuneWindow(fortune.toString());
+                   
+            //opens a fortune window -- 
+            //fortune logic is inside the window
+            FortuneWindow window = new FortuneWindow(
+                    colorField.getText(),
+                    monthField.getText(),
+                    dayField.getText()
+            );
+            
+            
         });
         
-        /*btnFact.setOnAction((ActionEvent event) -> {
-            Facts black = new Facts();
-            Facts green = new Facts();
-            Facts blue = new Facts();
-            
-            if ((factField.getText().equals("black")))
-            System.out.println(black.RandomFactBlack());
-            
-            
-                if ((factField.getText().equals("green")))
-                System.out.println(green.RandomFactGreen());
-                 
-            
-                    if ((factField.getText().equals("blue")))
-                    System.out.println(blue.RandomFactBlue());
-            
-            else
-            System.out.println("Enter correct color.");
-            
-        });*/
         
         
         primaryStage.setScene(sceneOpen);
