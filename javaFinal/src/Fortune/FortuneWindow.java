@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 import Fact.Facts;
 import java.util.Arrays;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 
 /**
@@ -19,7 +21,8 @@ import javafx.scene.control.Label;
  * @author galen
  */
 public class FortuneWindow extends Stage{
-    private String textToDisplay;
+    private String factText;
+    private String fortuneText;
     private String eyeColor;
     private String birthDay;
     private String[] validColors = new String[6];
@@ -41,13 +44,14 @@ public class FortuneWindow extends Stage{
         return Arrays.stream(this.validColors).parallel().anyMatch(inputStr::contains);
     }
     
-    public String GenerateText(){
-        Fortune fortune = new Fortune();
-        String fortuneText = fortune.toString();
+    private void generateFortune(){
+        Fortune f = new Fortune();
+        this.fortuneText = f.toString();
+    }
+    
+    private void generateFact(){
         Facts fact = new Facts(this.eyeColor);
-        String factText = fact.getFact();
-        
-        return birthDay +"\n" + fortuneText + "\n\n\n" + factText;
+        this.factText = fact.getFact(); 
     }
     
     public FortuneWindow(String eyeColor, String month, String day){
@@ -57,20 +61,35 @@ public class FortuneWindow extends Stage{
             this.eyeColor = eyeColor;
         } else{
    
-            this.eyeColor = "black";
+            this.eyeColor = validColors[0];
             
         }
         
         this.birthDay = month + " " + day;
-        this.textToDisplay = GenerateText();
+        
+        generateFact();
+        generateFortune();
         this.setTitle("Your Fortune");
         
         StackPane root = new StackPane();
         
-        Label stringOut = new Label(this.textToDisplay);
+        Label fortuneLabel = new Label("Your Fortune:");
+        Label fortuneContent = new Label(this.fortuneText);
+        fortuneContent.setWrapText(true);
         
-        TextFlow textPane = new TextFlow(stringOut);
-        root.getChildren().add(textPane);
+        VBox fortuneBox = new VBox(fortuneLabel, fortuneContent);
+        
+        Label factLabel = new Label("A Fact About You:");
+        Label factFact = new Label(this.factText);
+        factFact.setWrapText(true);
+        
+        VBox factBox = new VBox(factLabel, factFact);
+        
+        VBox vbMain;
+        vbMain = new VBox(fortuneBox, factBox);
+        vbMain.setSpacing(20);
+        
+        root.getChildren().add(vbMain);
         Scene scene = new Scene(root, 300,300);
         scene.getStylesheets().add(this.getClass().getResource("style.css").toExternalForm());
         

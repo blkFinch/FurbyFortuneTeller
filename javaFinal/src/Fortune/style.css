@@ -6,6 +6,8 @@
 }
 
 .label{
+    -fx-font-size: 16pt;
+    -fx-font-family: "Courier New";
     -fx-text-fill: white;
 }
 
@@ -22,11 +24,11 @@
 }
 
 .yellow{
-    -fx-background-color: yellow;
+    -fx-background-color: darkkhaki;
 }
 
 .hazel{
-    -fx-background-color: springgreen;
+    -fx-background-color: darkseagreen;
 }
 
 .brown{
