@@ -4,3 +4,31 @@
     -fx-base: rgb(132, 145, 47);
     -fx-background: rgb(225, 228, 203);
 }
+
+.label{
+    -fx-text-fill: white;
+}
+
+.blue{
+    -fx-background-color: blue;  
+}
+
+.green{
+    -fx-background-color: green;  
+}
+
+.black{
+    -fx-background-color: black;  
+}
+
+.yellow{
+    -fx-background-color: yellow;
+}
+
+.hazel{
+    -fx-background-color: springgreen;
+}
+
+.brown{
+    -fx-background-color: burlywood;
+}
