@@ -7,3 +7,16 @@ furby main stylesheet - all main styles here
     -fx-base: #CCCCFF;
     -fx-background-color: #CCCCFF;
 }
+
+.label{
+    -fx-font-size: 12pt;
+    -fx-font-family: "Abel";
+    -fx-text-fill: darkred;
+    -fx-background-color: #CCCCFF;
+}
+
+.hbox{
+    -fx-background-color: red;
+}
+
+

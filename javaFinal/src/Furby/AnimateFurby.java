@@ -1,10 +1,11 @@
-//furby animated! uses a sequence of images to create an animation.
-//images included are for testing--will update later.
+/*
+This is our main class. It holds the gui and renders
+desired animation pane on button clicks
+
+*/
 package Furby;
 
 import Fortune.FortuneWindow;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
@@ -12,29 +13,23 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-/**
- *
- * @author hobbydobbie
- */
 
 public class AnimateFurby extends Application {
 
     public void start(Stage primaryStage){      
 
         //main scene
-        BorderPane pane2 = new BorderPane();
+        
         primaryStage.setTitle("Furby Fortune Teller");
 
 
         
         
-        //imports stylesheet from Furby folder 
-//        scene.getStylesheets().add(this.getClass().getResource("style.css").toExternalForm());
+       
         
         TextField factField = new TextField();
         factField.setPrefSize(5,5);
@@ -48,38 +43,52 @@ public class AnimateFurby extends Application {
         Button reset = new Button();//fortune button
         reset.setText("New Fortune?");
         
-        GridPane controls = new GridPane();
-        controls.setHgap(1);
-        controls.setVgap(1);
         
-        controls.add(btn,2,6);
+   
         
-        //setting up control pane
-        controls.add(new Label("Enter your birth month:"), 0,3);
-        controls.add(new Label("Enter your birth day:"), 0,4);
-        controls.add(new Label("Choose your eye color:"), 0,6);
+        //setting up main control pane
+        Label bmLabel = new Label("Enter your birth month:");
+        Label bdLabel = new Label("Enter your birth day:");
+        Label ecLabel = new Label("Choose your eye color:");
         
         TextField monthField = new TextField();
         TextField dayField = new TextField();
         TextField colorField =new TextField();
         
-        controls.add(monthField, 1,3);
-        controls.add(dayField, 1,4);
-        controls.add(colorField, 1,6);
+        GridPane cb = new GridPane();
+        cb.add(bmLabel, 0, 0);
+        cb.add(monthField, 1, 0);
+        cb.add(bdLabel, 0, 1);
+        cb.add(dayField, 1, 1);
+        cb.add(ecLabel, 0, 2);
+        cb.add(colorField, 1, 2);
+        cb.add(btn, 2,2);
+        
+        HBox cbColor = new HBox(cb);
+
+        GridPane controls = new GridPane();
+        controls.getChildren().addAll(cbColor);
+        
+        //setting up title control
+        GridPane enterPane = new GridPane();
+        enterPane.add(enter, 1, 1);
+        
+        //Title Card
+        TitleCard tc = new TitleCard();
+       //generates idel furby
+        FurbyIdle fi = new FurbyIdle();
         
        
-        FurbyIdle fi = new FurbyIdle();
-       
-       
-        pane2.getChildren().add(fi);
-        pane2.setBottom(controls);
+        BorderPane pane = new BorderPane();
+        pane.getChildren().add(tc);
+        pane.setBottom(enterPane);
         
         btn.setOnAction((ActionEvent event) -> {
           
             //plays cool furby animation
              FurbyCool fc = new FurbyCool();
-             pane2.setCenter(fc);
-             pane2.setBottom(reset);
+             pane.setCenter(fc);
+             pane.setBottom(reset);
             //opens a fortune window -- 
             //fortune logic is inside the window
             FortuneWindow window = new FortuneWindow(
@@ -93,13 +102,26 @@ public class AnimateFurby extends Application {
          reset.setOnAction((ActionEvent event) -> {
           
             //resets to idle state
-            pane2.getChildren().clear();
-            pane2.getChildren().add(fi);
-            pane2.setBottom(controls);
+            pane.getChildren().clear();
+            pane.getChildren().add(fi);
+            pane.setBottom(controls);
+     
+        });
+         
+         enter.setOnAction((ActionEvent event) -> {
+             
+            
+            //resets to idle state
+            pane.getChildren().clear();
+            pane.getChildren().add(fi);
+            pane.setBottom(controls);
      
         });
         
-        Scene main = new Scene(pane2, 500, 350);
+        Scene main = new Scene(pane, 500, 350);
+        
+         //imports stylesheet from Furby folder 
+        main.getStylesheets().add(this.getClass().getResource("style.css").toExternalForm());
         primaryStage.setScene(main);
         primaryStage.show();
     }

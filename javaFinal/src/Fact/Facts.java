@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+This class returns a random fact out of a pool of facts based on
+the user's selected color
  */
 package Fact;
 
@@ -20,12 +19,12 @@ import java.util.logging.Logger;
  * @author hobbydobbie
  */
 public class Facts {
-    
-        
+
+
     private String fact;
     private String file;
- 
-    
+
+
     public String getFact() {
         return fact;
     }
@@ -33,12 +32,17 @@ public class Facts {
     public void setFact(String fact) {
         this.fact = fact;
     }
-
+    
+    //name all fact text files as color.txt
+    //where color is any color
+    //
     public Facts(String color) {
         this.file = "src/factText/" + color + ".txt";
         this.fact = RandomFact(this.file);
     }
 
+    //returns a random fact from desired file
+    //
     private String RandomFact(String filename) {
         //scans all lines in given file
         Scanner stan = null;
@@ -47,13 +51,13 @@ public class Facts {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Facts.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         //creates an array list of lines from the file
         List<String> lines = new ArrayList<String>();
         while (stan.hasNextLine()) {
             lines.add(stan.nextLine() + " " );
         }
-        
+
         //randomizes the order and returns the first line
         Collections.shuffle(lines);
         return lines.get(0);
