@@ -1,6 +1,6 @@
 /*
-furby main stylesheet - all main styles here 
-*/ 
+furby main stylesheet - all main styles here
+*/
 .root{
     -fx-font-size: 10pt;
     -fx-font-family: "Courier New";
@@ -11,8 +11,6 @@ furby main stylesheet - all main styles here
 .label{
     -fx-font-size: 12pt;
     -fx-font-family: "Abel";
-    -fx-text-fill: darkred;
-    -fx-background-color: #CCCCFF;
 }
 
 .hbox{

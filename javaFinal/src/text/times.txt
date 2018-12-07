@@ -17,3 +17,6 @@ thursday
 friday
 saturday
 on your birthday
+someday
+three weeks from now
+on the third

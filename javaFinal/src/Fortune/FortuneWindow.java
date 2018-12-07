@@ -29,8 +29,8 @@ public class FortuneWindow extends Stage{
 
     //these are colors that we know our program can handle
     //should match the file names of the files in the factText folder
-    
-   
+
+
     private void populateValidColors(){
         validColors[0] = "black";
         validColors[1] = "green";
@@ -39,60 +39,60 @@ public class FortuneWindow extends Stage{
         validColors[4] = "hazel";
         validColors[5] = "yellow";
     }
-    
+
     private boolean checkValidColor(String inputStr) {
         return Arrays.stream(this.validColors).parallel().anyMatch(inputStr::contains);
     }
-    
+
     private void generateFortune(){
         Fortune f = new Fortune();
         this.fortuneText = f.toString();
     }
-    
+
     private void generateFact(){
         Facts fact = new Facts(this.eyeColor);
-        this.factText = fact.getFact(); 
+        this.factText = fact.getFact();
     }
-    
+
     public FortuneWindow(String eyeColor, String month, String day){
         populateValidColors();
-        
+
         if(checkValidColor(eyeColor)){
             this.eyeColor = eyeColor;
         } else{
-   
+
             this.eyeColor = validColors[0];
-            
+
         }
-        
+
         this.birthDay = month + " " + day;
-        
+
         generateFact();
         generateFortune();
         this.setTitle("Your Fortune");
-        
+
         StackPane root = new StackPane();
-        
+
         Label fortuneLabel = new Label("Your Fortune:");
         Label fortuneContent = new Label(this.fortuneText);
         fortuneContent.setWrapText(true);
-        
+
         VBox fortuneBox = new VBox(fortuneLabel, fortuneContent);
-        
-        Label factLabel = new Label("A Fact About You:");
+
+        Label factLabel = new Label("Your Prophecy:");
         Label factFact = new Label(this.factText);
         factFact.setWrapText(true);
-        
+
         VBox factBox = new VBox(factLabel, factFact);
-        
+
         VBox vbMain;
         vbMain = new VBox(fortuneBox, factBox);
         vbMain.setSpacing(20);
-        
+
         root.getChildren().add(vbMain);
         Scene scene = new Scene(root, 300,300);
         scene.getStylesheets().add(this.getClass().getResource("style.css").toExternalForm());
-        
+
         this.setScene(scene);
         this.setX(300);
         root.getStyleClass().clear();
